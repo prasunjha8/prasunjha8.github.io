@@ -215,7 +215,7 @@
       ["cmd", "ros2 topic echo /prasun/status --once"],
       ["out", '<span class="c">data:</span> "Looking for research internships in robot learning, navigation & multi-robot systems."'],
       ["cmd", "ros2 service call /prasun/contact"],
-      ["out", '<span class="c">email:</span>  <a class="term-link" href="mailto:prasunjha080806@gmail.com">prasunjha080806@gmail.com</a>'],
+      ["out", '<span class="c">email:</span>  <a class="term-link" href="mailto:prasunjhaofficial@gmail.com">prasunjhaofficial@gmail.com</a>'],
       ["out", '<span class="c">github:</span> <a class="term-link" href="https://github.com/prasunjha8" target="_blank" rel="noopener">github.com/prasunjha8</a>'],
       ["out", '<span class="c">linkedin:</span> <a class="term-link" href="https://www.linkedin.com/in/prasun-jha-703685216/" target="_blank" rel="noopener">in/prasun-jha-703685216</a>'],
       ["out", '<span class="c">where:</span>  Ranchi / Jamshedpur, India  (IST, UTC+5:30)'],
