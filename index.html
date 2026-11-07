@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Prasun Jha · Robotics</title>
+  <meta name="description" content="Prasun Jha — Mathematics & Computing at BIT Mesra. Robot learning, autonomous navigation, multi-robot systems and control." />
+  <meta property="og:title" content="Prasun Jha · Robotics" />
+  <meta property="og:description" content="Robot learning, autonomous navigation, multi-robot systems and control." />
+  <meta property="og:image" content="assets/img/rover-render.png" />
+  <meta name="theme-color" content="#07090d" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%2307090d'/><circle cx='16' cy='16' r='9' fill='none' stroke='%2300e5ff' stroke-width='2.5'/><circle cx='16' cy='16' r='3' fill='%23ff5a1f'/></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script type="importmap">
+    { "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    } }
+  </script>
+</head>
+<body>
+  <!-- ============ BOOT SEQUENCE ============ -->
+  <div id="boot" aria-hidden="true">
+    <pre id="boot-log"></pre>
+  </div>
+
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav">
+    <a href="#top" class="logo"><span class="prompt">~/</span>prasun<span class="blink">_</span></a>
+    <nav>
+      <a href="#about"><span>01.</span>about</a>
+      <a href="#research"><span>02.</span>research</a>
+      <a href="#skills"><span>03.</span>stack</a>
+      <a href="#log"><span>04.</span>log</a>
+      <a href="#contact"><span>05.</span>contact</a>
+    </nav>
+    <a class="btn btn-ghost nav-cta" href="Prasun_Jha_Resume.pdf" target="_blank" rel="noopener">resume.pdf</a>
+  </header>
+
+  <main id="top">
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="hero">
+      <canvas id="scene" aria-label="3D rover scanning pedestrians with LiDAR"></canvas>
+      <img id="scene-fallback" src="assets/img/rover-render.png" alt="Rendered robot rover" hidden />
+
+      <div class="hero-content">
+        <p class="eyebrow mono">$ ros2 launch prasun portfolio.launch.py</p>
+        <h1 class="hero-title">
+          <span class="line">Hi, I'm</span>
+          <span class="line name scramble" data-text="Prasun Jha">Prasun Jha</span>
+        </h1>
+        <p class="hero-role mono">
+          &gt; <span id="typed"></span><span class="caret">▍</span>
+        </p>
+        <p class="hero-sub">
+          Mathematics &amp; Computing at <strong>BIT Mesra</strong>. I build robots that perceive, decide and act,
+          from reinforcement-learning policies in simulation to PID loops on a microcontroller.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary magnetic" href="#research">view research <span aria-hidden="true">→</span></a>
+          <a class="btn btn-ghost magnetic" href="https://github.com/prasunjha8" target="_blank" rel="noopener">github</a>
+          <a class="btn btn-ghost magnetic" href="https://www.linkedin.com/in/prasun-jha-703685216/" target="_blank" rel="noopener">linkedin</a>
+        </div>
+      </div>
+
+      <aside class="hud mono" aria-hidden="true">
+        <div class="hud-title">● LIVE · rover_sim</div>
+        <div><span>/odom.yaw</span><b id="hud-yaw">0.00</b></div>
+        <div><span>/scan.hits</span><b id="hud-hits">0</b></div>
+        <div><span>/peds</span><b id="hud-peds">0</b></div>
+        <div><span>min_range</span><b id="hud-min">0.00 m</b></div>
+        <div><span>render</span><b id="hud-fps">0 fps</b></div>
+        <div class="hud-note">model: built in Blender · click: disassemble</div>
+      </aside>
+
+      <a href="#about" class="scroll-hint mono" aria-label="Scroll down">scroll<span></span></a>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section id="about" class="section">
+      <h2 class="section-title reveal"><span class="num">01.</span>about_me<span class="rule"></span></h2>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>
+            I'm a third-year <strong>Integrated BS-MS student in Mathematics &amp; Computing</strong> at Birla Institute of
+            Technology, Mesra. I work across the whole robotics stack: perception, decision-making,
+            simulation and embedded hardware.
+          </p>
+          <p>
+            Right now I'm working on <strong>camera-only, socially aware navigation</strong>, where robots move through crowds
+            with no LiDAR or depth sensing. I'm also working on <strong>explainable multi-robot task allocation</strong>.
+            I care about the maths behind a working system, not only the fact that it runs.
+          </p>
+          <p>
+            I'm aiming for graduate research in <strong>robot learning and embodied intelligence</strong>.
+          </p>
+          <div class="chips">
+            <span>Embodied AI</span><span>Robot Learning</span><span>RL for Control</span>
+            <span>Autonomous Navigation</span><span>Sim-to-Real</span><span>Multi-Robot Systems</span>
+            <span>MARL</span><span>Social Navigation</span>
+          </div>
+        </div>
+        <div class="about-side reveal">
+          <figure class="portrait">
+            <img src="assets/img/prasun.jpg" alt="Portrait of Prasun Jha at BIT Mesra" width="640" height="800" loading="lazy" />
+            <div class="bbox" aria-hidden="true">
+              <span class="bbox-label mono">person · prasun_jha <b id="conf">0.00</b></span>
+              <i></i><i></i><i></i><i></i>
+            </div>
+            <div class="scan" aria-hidden="true"></div>
+            <figcaption class="mono">cam_0 · /image_raw · BIT Mesra, Ranchi</figcaption>
+          </figure>
+          <div class="stat-card">
+            <div class="stat"><b data-count="7">0</b><span>robotics projects</span></div>
+            <div class="stat"><b data-count="22">0</b><span>public repos</span></div>
+            <div class="stat"><b data-count="2">0</b><span>zonal podiums</span></div>
+            <div class="stat"><b data-count="2">0</b><span>GSoC '26 proposals</span></div>
+          </div>
+          <div class="terminal small">
+            <div class="term-bar"><i></i><i></i><i></i><span>whoami</span></div>
+            <pre><span class="c">name</span>      : Prasun Jha
+<span class="c">degree</span>    : Int. BS-MS, Math &amp; Computing
+<span class="c">school</span>    : BIT Mesra  (2024 – 2029)
+<span class="c">based_in</span>  : Jamshedpur, India
+<span class="c">role</span>      : Gen. Secretary, Robolution
+<span class="c">status</span>    : <span class="ok">open to research internships</span></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ RESEARCH / PROJECTS ============ -->
+    <section id="research" class="section">
+      <h2 class="section-title reveal"><span class="num">02.</span>research_&amp;_projects<span class="rule"></span></h2>
+
+      <div class="filters reveal mono" role="tablist">
+        <button class="active" data-filter="all">all</button>
+        <button data-filter="rl">reinforcement learning</button>
+        <button data-filter="nav">navigation</button>
+        <button data-filter="multi">multi-robot</button>
+        <button data-filter="control">control / embedded</button>
+      </div>
+
+      <div class="projects">
+        <!-- featured -->
+        <article class="project featured tilt reveal" data-tags="rl nav">
+          <div class="project-media media-socialnav" aria-hidden="true">
+            <canvas class="mini-sim" data-sim="crowd"></canvas>
+          </div>
+          <div class="project-body">
+            <div class="project-meta mono"><span class="status live">● ongoing research</span><span>2026 – present</span></div>
+            <h3>Vision-Guided Socially Aware Navigation</h3>
+            <p class="cmd mono">$ ros2 launch social_nav hospital_corridor.launch.py</p>
+            <ul>
+              <li>Camera-only assistive navigation stack, with <b>no LiDAR or depth sensing</b>. An Ackermann-drive robot runs in a simulated hospital corridor with hazard detection and teleoperation.</li>
+              <li>Crowds simulated with <b>ORCA (RVO2)</b> pedestrian nodes, plus an Open-RMF airport-terminal stress test.</li>
+              <li>Building a <b>PPO</b> baseline on OpenCV features and testing <b>VLM-derived scene semantics</b> as observations and for reward shaping. Evaluated on proxemics violations, collisions and time-to-goal.</li>
+            </ul>
+            <div class="tags mono"><span>ROS 2 Humble</span><span>Gazebo Fortress</span><span>PPO</span><span>SB3</span><span>OpenCV</span><span>VLMs</span><span>RVO2</span></div>
+            <a class="link mono" href="https://github.com/prasunjha8/social-nav-research" target="_blank" rel="noopener">github/social-nav-research ↗</a>
+          </div>
+        </article>
+
+        <article class="project featured reverse tilt reveal" data-tags="multi">
+          <div class="project-media">
+            <img src="assets/img/fuzzy-warehouse.gif" alt="MuJoCo warehouse simulation with autonomous robots, tasks and charger" loading="lazy" />
+          </div>
+          <div class="project-body">
+            <div class="project-meta mono"><span class="status done">● built</span><span>2026</span></div>
+            <h3>Fuzzy Robot Coordinator</h3>
+            <p class="cmd mono">$ python -m coordinator --sim mujoco --robots 3</p>
+            <ul>
+              <li>Explainable allocator that scores robot–task suitability from battery, distance, workload, payload ratio and urgency using <b>eight Sugeno-style fuzzy rules</b>. Compared against a weighted mathematical baseline.</li>
+              <li>Exact <b>one-to-one assignment</b> that maximises urgency-weighted suitability under payload and feasibility constraints.</li>
+              <li>Runs in a <b>MuJoCo warehouse</b> with three diff-drive robots and battery-aware charging (suspend at 25%, recharge to 85%). Includes a browser dashboard and 17 automated tests.</li>
+            </ul>
+            <div class="tags mono"><span>Fuzzy Logic</span><span>MRTA</span><span>Optimization</span><span>MuJoCo</span><span>Python</span></div>
+            <a class="link mono" href="https://github.com/prasunjha8/fuzzy-robot-coordinator" target="_blank" rel="noopener">github/fuzzy-robot-coordinator ↗</a>
+          </div>
+        </article>
+
+        <!-- grid -->
+        <div class="project-grid">
+          <article class="card tilt reveal" data-tags="rl control">
+            <div class="card-img video" aria-hidden="true"><video class="lazy-video" muted loop playsinline preload="none" poster="assets/video/moto-poster.jpg"><source src="assets/video/moto.mp4" type="video/mp4" /></video><span class="media-tag mono">● rec</span></div>
+            <div class="project-meta mono"><span class="status done">● built</span><span>Jun – Aug 2025</span></div>
+            <h3>RL Self-Balancing Motorcycle</h3>
+            <p>A <b>Soft Actor-Critic</b> agent that keeps an unstable two-wheeled motorcycle upright and drives it to waypoints. It runs in Gazebo 11 through a custom Gym ↔ ROS bridge, in Docker.</p>
+            <div class="tags mono"><span>SAC</span><span>ROS Noetic</span><span>Gazebo</span><span>Docker</span></div>
+            <a class="link mono" href="https://github.com/prasunjha8/catkin_ws" target="_blank" rel="noopener">github ↗</a>
+          </article>
+
+          <article class="card tilt reveal" data-tags="nav">
+            <canvas class="mini-sim card-sim" data-sim="slam" aria-hidden="true"></canvas>
+            <div class="project-meta mono"><span class="status live">● in progress</span><span>2026 – present</span></div>
+            <h3>TortoiseBot Navigation Stack</h3>
+            <p>A distributed ROS 2 stack. A Pi 4 edge node runs micro-ROS, LiDAR and camera drivers, and a Pi 5 Docker (Jazzy) compute node talks to it over DDS. Gazebo sim with a URDF/TF2 tree, plus SLAM Toolbox and Nav2.</p>
+            <div class="tags mono"><span>ROS 2 Jazzy</span><span>Nav2</span><span>SLAM</span><span>micro-ROS</span></div>
+            <a class="link mono" href="https://github.com/prasunjha8/tortoisewithself" target="_blank" rel="noopener">github ↗</a>
+          </article>
+
+          <article class="card tilt reveal" data-tags="control">
+            <div class="card-img cover" aria-hidden="true"><img src="assets/img/flightgear.jpg" alt="" loading="lazy" /><span class="media-tag mono">screenshot</span></div>
+            <div class="project-meta mono"><span class="status live">● in progress</span><span>Apr 2026 – present</span></div>
+            <h3>Flight Simulation Control</h3>
+            <p>A real-time flight-dynamics pipeline in <b>JSBSim</b> (a Cessna 172P and custom RC planes) with FlightGear visuals and Python control over UDP. PID loops are tuned to hold stable flight under disturbances.</p>
+            <div class="tags mono"><span>JSBSim</span><span>FlightGear</span><span>PID</span><span>UDP</span></div>
+            <a class="link mono" href="https://github.com/prasunjha8/jsbsim_droame" target="_blank" rel="noopener">github ↗</a>
+          </article>
+
+          <article class="card tilt reveal" data-tags="control">
+            <div class="card-img invert" aria-hidden="true"><img src="assets/img/pendulum-simulink.png" alt="" loading="lazy" /><span class="media-tag mono">screenshot</span></div>
+            <div class="project-meta mono"><span class="status done">● built</span><span>2024</span></div>
+            <h3>Inverted Pendulum on a 4-Wheel Cart</h3>
+            <p>Real-time balancing on an <b>ESP8266</b>. MPU6050 readings go through a Kalman filter for angle fusion, and a PID loop drives four DC motors through an L298N. A Wi-Fi web UI lets me tune PID live, without reflashing.</p>
+            <div class="tags mono"><span>ESP8266</span><span>Kalman</span><span>PID</span><span>C++</span></div>
+            <a class="link mono" href="https://github.com/prasunjha8/Inverted-Pendulum-on-a-4-wheel-Cart-" target="_blank" rel="noopener">github ↗</a>
+          </article>
+
+          <article class="card tilt reveal" data-tags="nav">
+            <div class="card-img video" aria-hidden="true"><video class="lazy-video" muted loop playsinline preload="none" poster="assets/video/eric-nav2-poster.jpg"><source src="assets/video/eric-nav2.mp4" type="video/mp4" /></video><span class="media-tag mono">● rec</span></div>
+            <div class="project-meta mono"><span class="status done">● built</span><span>Oct 2026</span></div>
+            <h3>Nav2 Bring-up from Scratch · ERIC Robotics</h3>
+            <p>An internship-selection task. I built map_server, AMCL and the Nav2 servers by hand instead of using <code>nav2_bringup</code>, and fixed 10 starter bugs. One was a wheel separation off by 2.6 cm (a 361° command turned only ~329°). Another was a <b>/tf flood</b> at ~300 msg/s that starved the controller. Result: <b>7 of 8 goals</b> reached across clean runs.</p>
+            <div class="tags mono"><span>Nav2</span><span>AMCL</span><span>Costmaps</span><span>Cyclone DDS</span><span>URDF</span></div>
+            <a class="link mono" href="https://github.com/prasunjha8/level01_ros_assignment-ERIC_Robotics" target="_blank" rel="noopener">github ↗</a>
+          </article>
+
+          <article class="card tilt reveal" data-tags="rl">
+            <canvas class="mini-sim card-sim" data-sim="valueiter" aria-hidden="true"></canvas>
+            <div class="project-meta mono"><span class="status done">● published</span><span>2026</span></div>
+            <h3>Reinforcement Learning Notes · NPTEL (IIT Madras)</h3>
+            <p>A web notebook for Prof. Balaraman Ravindran's RL course. It works through Bellman optimality, DP and TD methods, eligibility traces, function approximation, LSTD, fitted-Q/DQN, policy gradients and hierarchical RL. Every derivation is written out, with SVG diagrams.</p>
+            <div class="tags mono"><span>MDPs</span><span>TD(λ)</span><span>DQN</span><span>Policy Gradient</span><span>HRL</span></div>
+            <a class="link mono" href="https://prasunjha8.github.io/nptelrl.github.io/index.html" target="_blank" rel="noopener">read notes ↗</a>
+          </article>
+        </div>
+      </div>
+
+      <h3 class="sub-title reveal mono">// side quests</h3>
+      <div class="mini-grid">
+        <div class="mini reveal">
+          <div class="thumb"><video class="lazy-video" muted loop playsinline preload="none" poster="assets/video/robocon-r1-poster.jpg"><source src="assets/video/robocon-r1.mp4" type="video/mp4" /></video></div>
+          <div class="mini-body"><span class="lang cad">CAD · concept</span><h4>Robocon R1 Concept</h4><p>Mecanum-drive R1 for Team Pratyunmish: full CAD assembly plus animations of the pick-place, lifting and assembly mechanisms.</p>
+          <div class="mini-links mono"><a href="https://github.com/prasunjha8/pratyunmish_robocon" target="_blank" rel="noopener">code ↗</a></div></div>
+        </div>
+        <div class="mini reveal">
+          <div class="thumb"><img src="assets/img/live-tictactoe.jpg" alt="" loading="lazy" /></div>
+          <div class="mini-body"><span class="lang js">React · live</span><h4>N-D Tic-Tac-Toe</h4><p>Tic-tac-toe from a 2D plane up to a 6D hypercube, with projections built on linear algebra.</p>
+          <div class="mini-links mono"><a href="https://chah-gamma.vercel.app" target="_blank" rel="noopener">play ↗</a> <span class="dot">·</span> <a href="https://github.com/prasunjha8/multidimension-tic-tac-toe-" target="_blank" rel="noopener">code ↗</a></div></div>
+        </div>
+        <div class="mini reveal">
+          <div class="thumb"><div class="ph mono"><span>argmax<sub>q</sub> H(P) − E[H(P | q)]</span></div></div>
+          <div class="mini-body"><span class="lang py">Python</span><h4>IPL Akinator</h4><p>Picks the most informative (entropy-based) question each turn to guess any of 788 IPL players.</p>
+          <div class="mini-links mono"><a href="https://github.com/prasunjha8/ipl-Akinator" target="_blank" rel="noopener">code ↗</a></div></div>
+        </div>
+        <div class="mini reveal">
+          <div class="thumb"><img src="assets/img/agentverify.jpg" alt="" loading="lazy" /></div>
+          <div class="mini-body"><span class="lang py">Python</span><h4>AgentVerify</h4><p>LLM code generation with a sandboxed test-and-self-correct loop. Explores whether generated code can be trusted.</p>
+          <div class="mini-links mono"><a href="https://github.com/prasunjha8/Agentllmcode" target="_blank" rel="noopener">code ↗</a></div></div>
+        </div>
+        <div class="mini reveal">
+          <div class="thumb"><img src="assets/img/live-memoryos.jpg" alt="" loading="lazy" /></div>
+          <div class="mini-body"><span class="lang ts">TypeScript · live</span><h4>ProjectMemoryOS</h4><p>Semantic engineering memory: FastAPI, Next.js and pgvector, with CI.</p>
+          <div class="mini-links mono"><a href="https://project-memory-os-chi.vercel.app" target="_blank" rel="noopener">live ↗</a> <span class="dot">·</span> <a href="https://github.com/prasunjha8/ProjectMemoryOS" target="_blank" rel="noopener">code ↗</a></div></div>
+        </div>
+        <div class="mini reveal">
+          <div class="thumb"><div class="ph mono"><span>csv → scrape → score → draft</span></div></div>
+          <div class="mini-body"><span class="lang py">Python</span><h4>Sponsorship Intelligence</h4><p>Research-then-draft pipeline (scrape, score, LLM) behind Robolution's sponsor outreach.</p>
+          <div class="mini-links mono"><a href="https://github.com/prasunjha8/lead_generator" target="_blank" rel="noopener">code ↗</a></div></div>
+        </div>
+        <div class="mini reveal">
+          <div class="thumb"><img src="assets/img/live-munops.jpg" alt="" loading="lazy" /></div>
+          <div class="mini-body"><span class="lang js">React · live</span><h4>MUN Ops</h4><p>Real-time command dashboard for event staff: live status, location beacons and incident feed. Built overnight for BITMUN.</p>
+          <div class="mini-links mono"><a href="https://mun-ops.vercel.app" target="_blank" rel="noopener">live ↗</a> <span class="dot">·</span> <a href="https://github.com/prasunjha8/mun-ops" target="_blank" rel="noopener">code ↗</a></div></div>
+        </div>
+        <div class="mini reveal">
+          <div class="thumb"><img src="assets/img/live-om.jpg" alt="" loading="lazy" /></div>
+          <div class="mini-body"><span class="lang web">Web · live</span><h4>OM Group Website</h4><p>Responsive landing page for a smart-city and infrastructure company, deployed on Vercel.</p>
+          <div class="mini-links mono"><a href="https://om-industries-two.vercel.app" target="_blank" rel="noopener">live ↗</a> <span class="dot">·</span> <a href="https://github.com/prasunjha8/OM_Industries" target="_blank" rel="noopener">code ↗</a></div></div>
+        </div>
+        <div class="mini reveal">
+          <div class="thumb"><div class="ph mono"><span>while lonely: check_in()</span></div></div>
+          <div class="mini-body"><span class="lang py">Python</span><h4>Aura</h4><p>Prototype AI companion that checks in on its own and remembers past conversations (Firestore).</p>
+          <div class="mini-links mono"><a href="https://github.com/prasunjha8/Aura_ai" target="_blank" rel="noopener">code ↗</a></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section id="skills" class="section">
+      <h2 class="section-title reveal"><span class="num">03.</span>tech_stack<span class="rule"></span></h2>
+      <p class="section-lead reveal mono">$ ros2 node list   <span class="dim"># each node publishes into the next</span></p>
+      <div class="node-graph reveal" id="node-graph">
+        <svg class="graph-wires" aria-hidden="true"></svg>
+        <div class="node" data-node="perception"><header>/perception</header><p>OpenCV · YOLOv8 · VLMs · ArUco</p></div>
+        <div class="node" data-node="learning"><header>/learning</header><p>PyTorch · SB3 · PPO · SAC · Q-learning · Gymnasium</p></div>
+        <div class="node" data-node="planning"><header>/planning</header><p>Nav2 · SLAM Toolbox · ORCA · Fuzzy (Sugeno) · Optimization</p></div>
+        <div class="node" data-node="control"><header>/control</header><p>PID · Kalman Filtering · Task Allocation</p></div>
+        <div class="node" data-node="sim"><header>/simulation</header><p>Gazebo · MuJoCo · CoppeliaSim · JSBSim · Blender</p></div>
+        <div class="node" data-node="middleware"><header>/middleware</header><p>ROS 2 · TF2 · micro-ROS · DDS · Docker · Linux</p></div>
+        <div class="node" data-node="hardware"><header>/hardware</header><p>ESP32 · ESP8266 · Arduino · Raspberry Pi · Jetson Orin Nano</p></div>
+        <div class="node" data-node="lang"><header>/languages</header><p>Python · C++ · C · MATLAB</p></div>
+      </div>
+    </section>
+
+    <!-- ============ LOG (leadership + achievements) ============ -->
+    <section id="log" class="section">
+      <h2 class="section-title reveal"><span class="num">04.</span>mission_log<span class="rule"></span></h2>
+      <div class="timeline">
+        <div class="tl-line"><span class="tl-progress"></span></div>
+        <div class="tl-item reveal">
+          <span class="tl-tag mono">leadership</span>
+          <h4>General Secretary · Robolution, Robotics Club, BIT Mesra</h4>
+          <p>Lead project architecture and technical coordination for the club. Also handle sponsorship strategy and train junior members.</p>
+        </div>
+        <div class="tl-item reveal">
+          <span class="tl-tag mono">open source</span>
+          <h4>GSoC 2026 Proposals · JdeRobot</h4>
+          <p>Submitted two proposals: a C++ exercise extension, and a deep-learning tool for inspecting power towers.</p>
+        </div>
+        <div class="tl-item reveal">
+          <span class="tl-tag mono accent">achievement</span>
+          <h4>Zonal Runner-up · Ramakrishna Mission Innovation Challenge</h4>
+          <p>A wearable assistive-technology prototype.</p>
+        </div>
+        <div class="tl-item reveal">
+          <span class="tl-tag mono accent">achievement</span>
+          <h4>Zonal Runner-up · Dassault Systèmes Innovation Program</h4>
+          <p>A foldable, 3D-printed helmet design.</p>
+        </div>
+        <div class="tl-item reveal">
+          <span class="tl-tag mono">community</span>
+          <h4>Events Coordinator · UNESQUO, Quiz &amp; Debate Society</h4>
+          <p>Organise debate and quiz events. High Commendation at Sokovia Accords MUN, 2nd place at Pantheon Quiz, and a Special Mention at Online MUN (UNESCO committee).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact" class="section contact">
+      <h2 class="section-title reveal"><span class="num">05.</span>open_channel<span class="rule"></span></h2>
+      <div class="terminal big reveal">
+        <div class="term-bar"><i></i><i></i><i></i><span>prasun@robolab: ~</span></div>
+        <pre id="contact-term"></pre>
+      </div>
+      <div class="contact-cta reveal">
+        <a class="btn btn-primary magnetic" href="mailto:prasunjha080806@gmail.com">say hello →</a>
+        <a class="btn btn-ghost magnetic" href="https://github.com/prasunjha8" target="_blank" rel="noopener">github</a>
+        <a class="btn btn-ghost magnetic" href="https://www.linkedin.com/in/prasun-jha-703685216/" target="_blank" rel="noopener">linkedin</a>
+        <a class="btn btn-ghost magnetic" href="Prasun_Jha_Resume.pdf" target="_blank" rel="noopener">resume</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer mono">
+    <span>© <span id="year"></span> Prasun Jha</span>
+    <span class="dim">rover modelled in Blender · rendered with three.js</span>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+  <script type="module" src="js/scene.js"></script>
+</body>
+</html>
